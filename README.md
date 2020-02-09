@@ -1,0 +1,1 @@
+This is a collection of exercises used to learn databases
