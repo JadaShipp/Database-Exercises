@@ -46,13 +46,10 @@ LIMIT 5;
 # 6. How many current salaries are within 1 standard deviation of the highest salary
 # what percentage of all salaries is this?
 
-
-SELECT salary
+SELECT count(*)
 FROM salaries
-WHERE STDDEV(salary);
+WHERE to_date > now() AND salary > ((SELECT MAX(salary) - STD(salary)
+FROM salaries));
 
-
-(SELECT MAX(salary)
-FROM salaries);
 
 
