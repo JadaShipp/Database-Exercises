@@ -35,4 +35,11 @@ ALTER TABLE temp_pay MODIFY amount INT;
 SELECT *
 FROM temp_pay;
 
- 
+CREATE TABLE better_pay AS
+
+SELECT emp_no, dept_no, salary, dept_name
+FROM employees.salaries 
+JOIN employees.dept_emp USING (emp_no)
+JOIN employees.departments USING (dept_no)
+WHERE salaries.to_date > now();
+
