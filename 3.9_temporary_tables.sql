@@ -55,3 +55,21 @@ ALTER TABLE better_pay ADD salary_z_score FLOAT;
 SELECT *
 FROM better_pay;
 
+
+
+SELECT salary
+FROM curie_950.better_pay;
+
+SELECT *
+FROM neumerator;
+
+ALTER TABLE neumerator ADD top_part INT;
+
+SELECT * FROM neumerator
+
+SELECT AVG(salary) AS x_bar
+FROM neumerator;
+
+CREATE TEMPORARY TABLE neumerator AS 
+SELECT salary - (SELECT AVG(salary) FROM employees.salaries) AS neumerator
+FROM employees.salaries;
