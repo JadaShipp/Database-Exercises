@@ -11,4 +11,16 @@ UPDATE employees_with_departments
 SET full_name = CONCAT (first_name, " ", last_name);
 
 
+ALTER TABLE employees_with_departments DROP COLUMN first_name, DROP COLUMN last_name;
+
+SELECT *
+FROM employees_with_departments;
+
+
+CREATE TEMPORARY TABLE temp_pay AS 
+SELECT payment_id, customer_id, staff_id, amount, payment_date, last_update
+FROM sakila.payment;
+
+SELECT *
+FROM temp_pay;
  
