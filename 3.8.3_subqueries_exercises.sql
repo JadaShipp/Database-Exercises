@@ -24,6 +24,35 @@ WHERE emp_no NOT IN (
 	FROM dept_emp
 	WHERE dept_emp.to_date > now());
 	
-# 4. 
-SELECT *
+# 4. All current department managers that are female
+SELECT first_name, last_name
+FROM employees
+WHERE emp_no IN(
+	SELECT emp_no
+	FROM dept_manager
+	WHERE dept_manager.to_date > now()) AND gender = "F";
+	
+# 5. All current employees that have a higher than average salary
+SELECT first_name, last_name
+FROM employees
+WHERE emp_no IN(
+	SELECT emp_no
+	FROM salaries
+	WHERE salary > (SELECT AVG(salary)
+		FROM salaries)
+	AND to_date > NOW())
+LIMIT 5;
+
+# 6. How many current salaries are within 1 standard deviation of the highest salary
+# what percentage of all salaries is this?
+
+
+SELECT salary
+FROM salaries
+WHERE STDDEV(salary);
+
+
+(SELECT MAX(salary)
+FROM salaries);
+
 
