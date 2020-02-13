@@ -37,9 +37,21 @@ FROM temp_pay;
 
 CREATE TABLE better_pay AS
 
-SELECT emp_no, dept_no, salary, dept_name
+SELECT salary, dept_name
 FROM employees.salaries 
 JOIN employees.dept_emp USING (emp_no)
 JOIN employees.departments USING (dept_no)
 WHERE salaries.to_date > now();
+
+
+SELECT AVG(salary) AS x_bar
+FROM better_pay;
+
+SELECT STD(salary) AS stdv 
+FROM better_pay;
+
+ALTER TABLE better_pay ADD salary_z_score FLOAT;
+
+SELECT *
+FROM better_pay;
 
