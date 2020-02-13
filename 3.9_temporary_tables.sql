@@ -23,4 +23,16 @@ FROM sakila.payment;
 
 SELECT *
 FROM temp_pay;
+
+DESCRIBE temp_pay;
+
+ALTER TABLE temp_pay MODIFY amount DECIMAL(10,2);
+
+UPDATE temp_pay SET amount = amount * 100;
+
+ALTER TABLE temp_pay MODIFY amount INT;
+
+SELECT *
+FROM temp_pay;
+
  
