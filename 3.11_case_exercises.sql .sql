@@ -49,6 +49,17 @@ GROUP BY decade_groups;
 
 # Bonus
 #What is the average salary for each of the following department groups: R&D, Sales & Marketing, Prod & QM, Finance & HR, Customer Service?
+
+
+SELECT DISTINCT(CASE 
+	WHEN dept_name IN ('research', 'development')  THEN 'R&D'
+	WHEN dept_name IN ('sales', 'marketing') THEN 'sales&marketing'
+	WHEN dept_name IN ('production', 'quality management') THEN 'prod&QM'
+	WHEN dept_name IN ('finance','human resources') THEN 'Finance & HR'
+ELSE dept_name
+END) AS dept_group
+FROM departments
+GROUP BY dept_name;
  
 
 
